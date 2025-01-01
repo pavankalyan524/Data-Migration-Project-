@@ -1,0 +1,58 @@
+Cloud Migration and Metadata Management Case Study
+--------------------------------------------------
+Objective and Project Overview
+-------------------------------
+
+You were tasked with migrating 400 GB of data from on-premises to AWS, managing metadata for the transferred data, and setting up an automated system for ongoing data transfers and metadata extraction.
+
+Vpn Setup :
+A Vpn was set up to Establish a connection for transfering data between On-Premises to Aws.
+
+Data Transfer Process
+----------------------
+Initial Bulk Data Transfer to AWS S3 :
+
+Challenge: Migrating 400 GB of existing data from on-premises to AWS.
+Solution:
+DataSync Setup: You used AWS DataSync to move the bulk data to S3.
+Lifecycle Management: Implemented lifecycle policies to move data from standard to Glacier after a specific period.
+Metadata Extraction: Manually triggered a Lambda function to extract metadata and store it in RDS after the bulk transfer.
+
+Ongoing Data Transfer and Management
+------------------------------------
+Ongoing Incremental Data Transfer to AWS EFS :
+
+Challenge: Managing new data and its transfer to AWS.
+Solution:
+EFS Setup: EFS was set up on both the on-premises environment and AWS to facilitate the transfer of ongoing data using a cron job for every 6 hrs.
+
+Metadata Extraction and Automation
+----------------------------------
+Lambda Functions for Metadata Extraction
+Solution:
+EFS Lambda: Set up to extract metadata from EFS every 6 hours and 15 minutes, storing it in RDS.
+EventBridge Automation
+The EventBridge rule for EFS triggered metadata extraction without manual intervention.
+
+Security and Best Practices
+---------------------------
+AWS Secrets Manager
+Database Credentials: Securely storing database credentials using AWS Secrets Manager rather than hardcoding them in Lambda functions.
+
+Cost and Performance Optimization
+---------------------------------
+S3 Lifecycle Policies: Used to move older data to Glacier for cost savings.
+EventBridge and Lambda: Automated metadata extraction, reducing manual effort and ensuring scalability.
+
+Error Handling and Monitoring
+-----------------------------
+Lambda Failures: Implementing error handling, retry logic, and dead-letter queues (DLQ) for Lambda functions to ensure successful metadata extraction.
+CloudWatch Monitoring: Integrating CloudWatch Logs for debugging and CloudWatch Alarms for monitoring Lambda performance.
+
+Conclusion
+-----------
+Your case study demonstrates a well-structured approach to cloud migration and metadata management using AWS services. You leveraged automation, cost optimization, 
+and security best practices to ensure a seamless migration and ongoing data management. 
+By manually triggering the Lambda function for the initial bulk transfer and automating future operations, you efficiently handled both large datasets and ongoing data updates.
+
+
