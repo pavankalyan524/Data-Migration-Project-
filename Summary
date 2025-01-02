@@ -1,0 +1,13 @@
+1. At first, You set up a VPN connection from on-premises to AWS.
+
+2. Initially, you set up a DataSync agent in on premises to transfer around 400 GB of existing data from on-premises to an AWS S3 bucket.
+
+3. We used lifecycle configuration in S3 to move data from S3 Standard to Glacier after the transfer.
+
+4. You manually plan to run a Lambda function whenever data is stored in the S3 bucket, which fetches metadata and stores it in an RDS database.
+
+5. We have mounted EFS on both on-premises and AWS servers and scheduled a cron job to run for every 6 hrs. 
+
+6. A local cron job transfers data to the EFS mount path, reflecting the data in AWS EFS as well.
+
+7. An EventBridge rule will invoke a Lambda function every 6 hours and 15 minutes to check EFS for new data and store the metadata in RDS.
