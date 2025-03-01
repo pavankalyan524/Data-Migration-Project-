@@ -1,0 +1,7 @@
+How to Explain to the Interviewer?
+
+🔹 "In our use case, we followed a mix of "Rehost", "Replatform", and "Retain" strategies because different components required different approaches."
+🔹 "We Rehosted large amounts of data from on-prem to AWS S3 without major changes."
+🔹 "We Replatformed by optimizing with AWS services like Lambda, RDS, EFS, and EventBridge for automation."
+🔹 "We Retained our on-prem EFS and cron jobs because they were still needed for hybrid operations."
+🔹 "This hybrid approach helped balance cost, performance, and operational efficiency during migration."
