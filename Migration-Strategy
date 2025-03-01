@@ -1,3 +1,24 @@
+🏁 Preparation (If Application already follow microservice architecture Instead of monolithic, This step is done)
+           │
+           ▼
+📋 Planning (Strategy & Phases)
+           │
+           ▼
+🚀 Migration (Execution & Data Transfer)
+           │
+           ▼
+📊 Monitoring (Validation & Performance)
+           │
+           ▼
+🔧 Optimization (Cost & Efficiency)
+           │
+🎯 Successful Cloud Migration 🎯
+
+
+
+
+
+
 How to Explain to the Interviewer?
 
 🔹 "In our use case, we followed a mix of "Rehost", "Replatform", and "Retain" strategies because different components required different approaches."
